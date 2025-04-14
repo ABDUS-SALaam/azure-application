@@ -2,9 +2,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
-builder.Configuration
-.AddJsonFile("appsettings.json")
-    .AddEnvironmentVariables();
+builder.Configuration.AddAzureAppConfiguration("Endpoint=https://ac-learning.azconfig.io;Id=8ntB;Secret=3mfIRMT2ZWa8cHOyzXmC6ffc9zl9XBJniQ0cemokobOl40SU5TLmJQQJ99BDACGhslB7YLY4AAACAZAC4ElZ");
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
