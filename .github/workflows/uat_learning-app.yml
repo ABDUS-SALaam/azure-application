@@ -1,12 +1,12 @@
 # Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 
-name: Build and deploy from main branch to Azure Web App - learning-app
+name: Build and deploy from UAT branch to Azure Web App - learning-app
 
 on:
   push:
     branches:
-      - main
+      - UAT
   workflow_dispatch:
 
 jobs:
@@ -39,7 +39,7 @@ jobs:
     runs-on: windows-latest
     needs: build
     environment:
-      name: 'Production'
+      name: 'UAT'
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
     permissions:
       id-token: write #This is required for requesting the JWT
@@ -54,18 +54,15 @@ jobs:
       - name: Login to Azure
         uses: azure/login@v2
         with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_B05BE4D3AF144808A3B01D2230BB1756 }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_BC9376928A624E77A18FC3C38706F157 }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_4A73F58F480A4EBDA9DD5E9003F2F034 }}
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_D4E64932703F4370BFBCDA8D0DE7396A }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_51013F0EB8534FF883791A9E511FFA75 }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_95B9B81CAAAF4E46B81418A7AB04FF4D }}
 
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v3
         with:
           app-name: 'learning-app'
-          slot-name: 'Production'
+          slot-name: 'UAT'
           package: .
-          
-          
-          
           

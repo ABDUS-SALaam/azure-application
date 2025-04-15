@@ -18,7 +18,9 @@ public class IndexModel : PageModel
     public void OnGet()
     {
        
-        string connectionString = Environment.GetEnvironmentVariable("AZURE_SQL_CONNECTIONSTRING")!;
+        //string connectionString = Environment.GetEnvironmentVariable("AZURE_SQL_CONNECTIONSTRING")!;
+        var config= _configuration.GetSection("Settings");
+        var connectionString = config.GetValue<string>("DbPassword");
         var sqlConnection = new SqlConnection(connectionString);
         sqlConnection.Open();
 
