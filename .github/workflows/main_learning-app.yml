@@ -6,7 +6,7 @@ name: Build and deploy from main branch to Azure Web App - learning-app
 on:
   push:
     branches:
-      - UAT
+      - main
   workflow_dispatch:
 
 jobs:
