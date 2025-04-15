@@ -19,7 +19,7 @@ public class IndexModel : PageModel
     {
        
         //string connectionString = Environment.GetEnvironmentVariable("AZURE_SQL_CONNECTIONSTRING")!;
-        var config= _configuration.GetSection("UAT:Settings");
+        var config= _configuration.GetSection("Settings");
         var connectionString = config.GetValue<string>("DbPassword");
         var sqlConnection = new SqlConnection(connectionString);
         sqlConnection.Open();
