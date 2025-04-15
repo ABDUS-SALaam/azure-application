@@ -65,3 +65,7 @@ jobs:
           app-name: 'learning-app'
           slot-name: 'Production'
           package: .
+          
+          
+          
+          
